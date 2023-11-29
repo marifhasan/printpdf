@@ -1,0 +1,46 @@
+<?php
+
+namespace App\Prints;
+
+use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Storage;
+
+class ___NAME___
+{
+    public function __construct()
+    {
+    }
+
+    public function options(): array
+    {
+        return [
+            'mode' => 'utf-8',
+            'format' => 'A4',
+            'orientation' => 'P',
+            'debug' => true,
+            'allow_output_buffering' => true,
+            'tempDir' => Storage::path('temp'),
+            'margin_top' => 24,
+            'margin_right' => 12,
+            'margin_footer' => 12,
+            'margin_left' => 12,
+            'default_font' => 'freeserif',
+            'default_font_size' => 11,
+        ];
+    }
+
+    public function view(): View
+    {
+        $params = [
+            'heading' => "PDF heading",
+        ];
+
+        return view('prints.___BLADE___', $params);
+    }
+
+    public function headerView(): View
+    {
+        return view('prints.partials.header');
+    }
+
+}

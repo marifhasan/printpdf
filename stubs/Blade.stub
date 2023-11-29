@@ -1,0 +1,29 @@
+@extends('prints.layout')
+
+@section('title', $heading)
+
+@section('content')
+    <div class="mb-8">
+        <h1 class="mb-2 text-xl">Heading</h1>
+
+	</div>
+@endsection
+
+@section('headContent')
+<div class="">
+    <table class="mt-2 mx-auto">
+        <tbody>
+            <tr>
+                <th class="align-middle text-2xl text-center py-1 px-2" colspan="3">{{ $heading }}</th>
+            </tr>
+            <tr>
+                <td class="w-72 align-middle text-lg text-right py-1 px-2">{{ "Duration" }}</td>
+                <th class="w-4 align-middle text-lg text-center py-1 px-0"> : </th>
+                <td class="w-72 align-middle text-lg text-left py-1 px-2"></td>
+            </tr>
+			
+        </tbody>
+    </table>
+
+</div>
+@endsection
