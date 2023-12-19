@@ -18,7 +18,7 @@ class MakePrint extends Command
      *
      * @var string
      */
-    protected $description = 'Make new pdf document';
+    protected $description = 'Create a new pdf print class';
 
     /**
      * Execute the console command.
