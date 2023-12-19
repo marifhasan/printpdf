@@ -7,9 +7,7 @@ use Illuminate\Support\Facades\Storage;
 
 class ___NAME___
 {
-	private $fileName = null;
-
-    public function __construct()
+    public function __construct(public $___VARIABLE_NAME___)
     {
     }
 
@@ -20,27 +18,28 @@ class ___NAME___
             'format' => 'A4',
             'orientation' => 'P',
             'debug' => true,
-            'allow_output_buffering' => true,
-            'tempDir' => Storage::path('temp'),
+            'default_font' => 'freeserif',
+            'default_font_size' => 11,
+            'defaultCssFile' => resource_path('/css/printpdf.css'),
             'margin_top' => 24,
             'margin_right' => 12,
             'margin_footer' => 12,
             'margin_left' => 12,
-            'default_font' => 'freeserif',
-            'default_font_size' => 11,
-            'defaultCssFile' => resource_path('/css/print.css'),
+            'tempDir' => storage_path('printpdf'),
+            'allow_output_buffering' => true,
         ];
     }
 
     public function fileName(): string
     {
-        return $this->fileName;
+		return "___BLADE___ file - " . $this->___VARIABLE_NAME___->id . ".pdf";
     }
+
 
     public function view(): View
     {
         $params = [
-            'heading' => "PDF heading",
+            'heading' => "Demo PDF heading",
         ];
 
         return view('prints.___BLADE___', $params);

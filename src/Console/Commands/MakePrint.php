@@ -29,26 +29,38 @@ class MakePrint extends Command
     {
         $name = $this->argument('name');
 
+		$this->makeTempFolder();
 		$this->makeCssFile();
 		$this->makeClassFile($name);
 		$this->makeBladeFile($name);
     }
 
+	private function makeTempFolder(): void
+	{
+		$temp_folder = storage_path("printpdf/.gitignore");
+		if(! file_exists($temp_folder)) {
+			$content = file_get_contents(__DIR__ . '/../../../stubs/.gitignore.stub');
+			$this->make($temp_folder, $content);
+		}
+    }
+
 	private function makeCssFile(): void
 	{
-		$css_file = base_path("resources/css/print.css");
-		if(! file_exists($css_file)) {
+		$css_file_name = base_path("resources/css/printpdf.css");
+		if(! file_exists($css_file_name)) {
 			$content = file_get_contents(__DIR__ . '/../../../stubs/Style.stub');
-			$this->make($css_file, $content);
+			$this->make($css_file_name, $content);
 		}
     }
 
 	private function makeClassFile($name): void
 	{
-		$blade_file_name = $this->camel2dashed($name);
+		$blade_file_name = $this->nameFormatConverter($name, "-");
+		$variable_name = $this->nameFormatConverter($name, "_");
 
         $content = file_get_contents(__DIR__ . '/../../../stubs/Print.stub');
         $content = str_replace('___NAME___', $name, $content);
+        $content = str_replace('___VARIABLE_NAME___', $variable_name, $content);
         $content = str_replace('___BLADE___', $blade_file_name, $content);
 
 		$this->make(base_path("app/Prints/{$name}.php"), $content);
@@ -56,19 +68,19 @@ class MakePrint extends Command
 
 	private function makeBladeFile($name): void
 	{
-		$layout_file = base_path("resources/views/prints/layout.blade.php");
-		if(! file_exists($layout_file)) {
+		$layout_file_name = base_path("resources/views/prints/layout.blade.php");
+		if(! file_exists($layout_file_name)) {
 			$content = file_get_contents(__DIR__ . '/../../../stubs/Layout.stub');
-			$this->make($layout_file, $content);
+			$this->make($layout_file_name, $content);
 		}
 
-		$header_file = base_path("resources/views/prints/partials/header.blade.php");
-		if(! file_exists($header_file)) {
+		$header_file_name = base_path("resources/views/prints/partials/header.blade.php");
+		if(! file_exists($header_file_name)) {
 			$content = file_get_contents(__DIR__ . '/../../../stubs/Header.stub');
-			$this->make($header_file, $content);
+			$this->make($header_file_name, $content);
 		}
 
-		$blade_file_name = $this->camel2dashed($name);
+		$blade_file_name = $this->nameFormatConverter($name, "-");
         $content = file_get_contents(__DIR__ . '/../../../stubs/Blade.stub');
 		$this->make(base_path("resources/views/prints/{$blade_file_name}.blade.php"), $content);
     }
@@ -84,8 +96,8 @@ class MakePrint extends Command
         fclose($fp);
 	}
 
-	private function camel2dashed($name): string
+	private function nameFormatConverter($name, $variable = "-"): string
 	{
-		return strtolower(preg_replace('/([a-zA-Z])(?=[A-Z])/', '$1-', $name));
+		return strtolower(preg_replace('/([a-zA-Z])(?=[A-Z])/', '$1' . $variable, $name));
 	}
 }
