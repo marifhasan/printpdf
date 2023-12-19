@@ -21,10 +21,10 @@
             "email": "arif.saiket@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
 	"extra": {
 		"branch-alias": {
-			"dev-main": "1.1-dev"
+			"dev-main": "2.0-dev"
 		},
         "laravel": {
             "providers": [

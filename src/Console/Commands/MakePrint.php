@@ -29,8 +29,18 @@ class MakePrint extends Command
     {
         $name = $this->argument('name');
 
+		$this->makeCssFile();
 		$this->makeClassFile($name);
 		$this->makeBladeFile($name);
+    }
+
+	private function makeCssFile(): void
+	{
+		$css_file = base_path("resources/css/print.css");
+		if(! file_exists($css_file)) {
+			$content = file_get_contents(__DIR__ . '/../../../stubs/Style.stub');
+			$this->make($css_file, $content);
+		}
     }
 
 	private function makeClassFile($name): void

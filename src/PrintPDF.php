@@ -17,7 +17,7 @@ class PrintPDF
     {
     }
 
-    public static function make(object $pdfObject, string $fileName)
+    public static function make(object $pdfObject)
     {
         $defaultConfig = (new ConfigVariables())->getDefaults();
         $fontDirs = $defaultConfig['fontDir'];
@@ -51,6 +51,10 @@ class PrintPDF
         if (method_exists($pdfObject, 'footerView')) {
             $pdf->SetHTMLFooter($pdfObject->footerView());
         }
+		
+        if (method_exists($pdfObject, 'fileName')) {
+            self::$fileName = $pdfObject->fileName();
+        }
 
         $pdf->WriteHTML($pdfObject->view());
 
@@ -58,7 +62,6 @@ class PrintPDF
         $pdf->defaultheaderline = 0;
         $pdf->defaultfooterline = 0;
 
-        self::$fileName = $fileName;
         self::$pdf = $pdf;
 
         return new self;
