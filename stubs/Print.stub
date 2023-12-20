@@ -3,7 +3,6 @@
 namespace App\Prints;
 
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Facades\Storage;
 
 class ___NAME___
 {
@@ -35,7 +34,6 @@ class ___NAME___
 		return "___BLADE___ file - " . $this->___VARIABLE_NAME___->id . ".pdf";
     }
 
-
     public function view(): View
     {
         $params = [
@@ -49,5 +47,4 @@ class ___NAME___
     {
         return view('prints.partials.header');
     }
-
 }
