@@ -4,26 +4,42 @@
 
 @section('content')
     <div class="mb-8">
-        <h1 class="mb-2 text-xl">Heading</h1>
+        <h1 class="mb-2 text-lg">Table Title</h1>
 
-	</div>
+		<table class="table-fixed w-full mt-8 border-collapse">
+            <thead>
+                <tr>
+                    <th class="w-16 px-2 py-1 border align-middle text-center" scope="col">S.N.</th>
+                    <th class="w-32 px-2 py-1 border align-middle text-center" scope="col">Date</th>
+                    <th class="px-2 py-1 border align-middle text-left" scope="col">Name</th>
+                    <th class="px-2 py-1 border align-middle text-right" scope="col">Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+				<tr>
+					<td class="px-2 py-1 border align-middle text-center"></td>
+					<td class="px-2 py-1 border align-middle text-center"></td>
+					<td class="px-2 py-1 border align-middle text-left"></td>
+					<td class="px-2 py-1 border align-middle text-right"></td>
+				</tr>
+            </tbody>
+        </table>
+    </div>
 @endsection
 
 @section('headContent')
-<div class="">
-    <table class="mt-2 mx-auto">
-        <tbody>
-            <tr>
-                <th class="align-middle text-2xl text-center py-1 px-2" colspan="3">{{ $heading }}</th>
-            </tr>
-            <tr>
-                <td class="w-72 align-middle text-lg text-right py-1 px-2">{{ "Duration" }}</td>
-                <th class="w-4 align-middle text-lg text-center py-1 px-0"> : </th>
-                <td class="w-72 align-middle text-lg text-left py-1 px-2"></td>
-            </tr>
-			
-        </tbody>
-    </table>
-
-</div>
+    <div class="">
+        <table class="mt-2 mx-auto">
+            <tbody>
+                <tr>
+                    <th class="px-2 py-1 align-middle text-2xl text-center" colspan="3">{{ $heading }}</th>
+                </tr>
+                <tr>
+                    <td class="w-72 px-2 py-1 align-middle text-lg text-right">{{ 'Duration' }}</td>
+                    <th class="w-4 px-0 py-1 align-middle text-lg text-center"> : </th>
+                    <td class="w-72 px-2 py-1 align-middle text-lg text-left"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 @endsection
