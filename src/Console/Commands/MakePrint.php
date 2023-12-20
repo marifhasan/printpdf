@@ -3,6 +3,7 @@
 namespace Marifhasan\PrintPDF\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Str;
 
 class MakePrint extends Command
 {
@@ -57,10 +58,12 @@ class MakePrint extends Command
 	{
 		$blade_file_name = $this->nameFormatConverter($name, "-");
 		$variable_name = $this->nameFormatConverter($name, "_");
+		$title_name = Str::upper($this->nameFormatConverter($name, " "));
 
         $content = file_get_contents(__DIR__ . '/../../../stubs/Print.stub');
         $content = str_replace('___NAME___', $name, $content);
         $content = str_replace('___VARIABLE_NAME___', $variable_name, $content);
+        $content = str_replace('___TITLE___', $title_name, $content);
         $content = str_replace('___BLADE___', $blade_file_name, $content);
 
 		$this->make(base_path("app/Prints/{$name}.php"), $content);

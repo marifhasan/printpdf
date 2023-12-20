@@ -37,7 +37,7 @@ class ___NAME___
     public function view(): View
     {
         $params = [
-            'heading' => "Demo PDF heading",
+            'heading' => "___TITLE___",
         ];
 
         return view('prints.___BLADE___', $params);
@@ -45,6 +45,13 @@ class ___NAME___
 
     public function headerView(): View
     {
-        return view('prints.partials.header');
+        $params = [
+			'isLandscape' => false,
+			'isPageNoVisible' => false,
+            'heading' => config('app.name', 'Laravel'),
+            'subheading' => "",
+        ];
+
+        return view('prints.partials.header', $params);
     }
 }
