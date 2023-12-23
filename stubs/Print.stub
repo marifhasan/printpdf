@@ -38,6 +38,7 @@ class ___NAME___
     {
         $params = [
             'heading' => "___TITLE___",
+			'___VARIABLE_NAME___' => $this->___VARIABLE_NAME___,
         ];
 
         return view('prints.___BLADE___', $params);
