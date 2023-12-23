@@ -18,9 +18,9 @@ Add OrderPrint pdf for your application. by below command
 $ php artisan make:print OrderPrint
 ```
 
-It will create `app/Prints/OrderPrint.php` File inside app directory, add `resources/views/prints` directory and `demo-print.blade.php`
+It will create `app/Prints/OrderPrint.php` File inside app directory, add `resources/views/prints` directory and `order-print.blade.php`
 
-Modify `app/Prints/OrderPrint.php` and `resources/views/prints/demo-print.blade.php` for desired pdf.
+Modify `app/Prints/OrderPrint.php` and `resources/views/prints/order-print.blade.php` for desired pdf.
 
 For modifying the pdf property change the 'options' method in side of `app/Prints/OrderPrint.php` file.
 
