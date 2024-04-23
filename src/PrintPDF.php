@@ -31,7 +31,7 @@ class PrintPDF
             'orientation' => 'P',
             'debug' => true,
             'allow_output_buffering' => true,
-            'tempDir' => '/temp',
+            'tempDir' => storage_path('printpdf/temp'),
             'margin_top' => 24,
             'margin_right' => 12,
             'margin_footer' => 12,
