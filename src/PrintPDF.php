@@ -2,9 +2,6 @@
 
 namespace Marifhasan\PrintPDF;
 
-use Illuminate\Support\Facades\Storage;
-use Mpdf\Config\ConfigVariables;
-use Mpdf\Config\FontVariables;
 use Mpdf\Mpdf;
 
 class PrintPDF
@@ -19,19 +16,13 @@ class PrintPDF
 
     public static function make(object $pdfObject)
     {
-        $defaultConfig = (new ConfigVariables())->getDefaults();
-        $fontDirs = $defaultConfig['fontDir'];
-
-        $defaultFontConfig = (new FontVariables())->getDefaults();
-        $fontData = $defaultFontConfig['fontdata'];
-
         $options = [
             'mode' => 'utf-8',
             'format' => 'A4',
             'orientation' => 'P',
-            'debug' => true,
-            'allow_output_buffering' => true,
-            'tempDir' => storage_path('printpdf/temp'),
+            'debug' => config('app.debug'), // ignore the error it will be found on project
+            'allow_output_buffering' => config('app.debug'), // ignore the error it will be found on project
+            'tempDir' => storage_path('printpdf/temp'), // ignore the error it will be found on project
             'margin_top' => 24,
             'margin_right' => 12,
             'margin_footer' => 12,

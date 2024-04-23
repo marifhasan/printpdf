@@ -3,6 +3,8 @@
 namespace App\Prints;
 
 use Illuminate\Contracts\View\View;
+use Mpdf\Config\ConfigVariables;
+use Mpdf\Config\FontVariables;
 
 class ___NAME___
 {
@@ -12,6 +14,21 @@ class ___NAME___
 
     public function options(): array
     {
+		// Use below code for custom font
+        // $defaultConfig = (new ConfigVariables())->getDefaults();
+        // $fontDirs = $defaultConfig['fontDir'];
+        // $defaultFontConfig = (new FontVariables())->getDefaults();
+        // $fontData = $defaultFontConfig['fontdata'];
+
+        //    'fontDir' => array_merge($fontDirs, [resource_path().'/fonts']),
+        //    'fontdata' => $fontData + [
+        //        'kalpurush' => [
+        //            'R' => 'Kalpurush.ttf',
+        //            'B' => 'Kalpurush.ttf',
+        //            'useOTL' => 0xFF,
+        //        ],
+        //    ],
+
         return [
             'mode' => 'utf-8',
             'format' => 'A4',
