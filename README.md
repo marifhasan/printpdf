@@ -6,7 +6,7 @@ Installation
 Official installation method is via composer and its packagist package [marifhasan/printpdf](https://packagist.org/packages/marifhasan/printpdf).
 
 ```
-$ composer require marifhasan/printpdf --save-dev
+$ composer require marifhasan/printpdf --dev
 ```
 
 Usage
