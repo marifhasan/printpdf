@@ -24,7 +24,7 @@
     "minimum-stability": "stable",
 	"extra": {
 		"branch-alias": {
-			"dev-development": "dev-development"
+			"dev-development": "dev-development-dev"
 		},
         "laravel": {
             "providers": [
