@@ -6,7 +6,7 @@ Installation
 Official installation method is via composer and its packagist package [marifhasan/printpdf](https://packagist.org/packages/marifhasan/printpdf).
 
 ```
-$ composer require marifhasan/printpdf --dev
+composer require marifhasan/printpdf --dev
 ```
 
 Usage
@@ -15,7 +15,7 @@ Usage
 Add OrderPrint pdf for your application. by below command
 
 ```
-$ php artisan make:print OrderPrint
+php artisan make:print OrderPrint
 ```
 
 It will create `app/Prints/OrderPrint.php` File inside app directory, add `resources/views/prints` directory and `order-print.blade.php`
