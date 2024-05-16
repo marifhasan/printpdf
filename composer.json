@@ -4,10 +4,10 @@
     "type": "library",
     "homepage": "https://github.com/marifhasan/printpdf",
     "require": {
-        "php": "^8.0",
-        "illuminate/console": "^9.0|^10.0",
-        "illuminate/support": "^9.0|^10.0",
-        "mpdf/mpdf": "^8.1"
+        "php": "^8.2",
+        "illuminate/console": "^11.0",
+        "illuminate/support": "^11.0",
+        "mpdf/mpdf": "^8.2"
     },
     "license": "MIT",
     "autoload": {
@@ -24,7 +24,7 @@
     "minimum-stability": "stable",
 	"extra": {
 		"branch-alias": {
-			"dev-main": "3.0-dev"
+			"dev-main": "3.0"
 		},
         "laravel": {
             "providers": [
