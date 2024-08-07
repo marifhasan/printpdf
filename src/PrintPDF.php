@@ -42,16 +42,20 @@ class PrintPDF
         if (method_exists($pdfObject, 'footerView')) {
             $pdf->SetHTMLFooter($pdfObject->footerView());
         }
-		
-        if (method_exists($pdfObject, 'fileName')) {
-            self::$fileName = $pdfObject->fileName();
-        }
 
         $pdf->WriteHTML($pdfObject->view());
+
+		if (method_exists($pdfObject, 'lastFooterView')) {
+            $pdf->SetHTMLFooter($pdfObject->lastFooterView());
+        }
 
         $pdf->showImageErrors = true;
         $pdf->defaultheaderline = 0;
         $pdf->defaultfooterline = 0;
+
+		if (method_exists($pdfObject, 'fileName')) {
+            self::$fileName = $pdfObject->fileName();
+        }
 
         self::$pdf = $pdf;
 
