@@ -49,6 +49,10 @@ class PrintPDF
 
         $pdf->WriteHTML($pdfObject->view());
 
+		if (method_exists($pdfObject, 'lastFooterView')) {
+            $pdf->SetHTMLFooter($pdfObject->lastFooterView());
+        }
+
         $pdf->showImageErrors = true;
         $pdf->defaultheaderline = 0;
         $pdf->defaultfooterline = 0;
